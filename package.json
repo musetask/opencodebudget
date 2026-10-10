@@ -1,0 +1,20 @@
+{
+  "name": "opencode-budget-recorder",
+  "version": "0.1.0",
+  "description": "opencodebudget 记录层：被动记录每步耗时/token/工具耗时到本地 sqlite，不做查询不做中断",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.ts"
+  },
+  "dependencies": {
+    "@opencode/plugin": "2.0.26"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}
