@@ -110,8 +110,9 @@ export default Plugin.define({
       safe(() => {
         const prev = pending.get(key(event.sessionID));
         pending.set(key(event.sessionID), {
-          t0: prev?.t0 ?? Date.now(),
-          httpStart: prev?.httpStart ?? null,
+          // 每次 context hook 都是一次新请求：t0 重置为本次，total 才是一步的耗时。
+          t0: Date.now(),
+          httpStart: null,
           agent: event.agent ?? prev?.agent ?? "unknown",
           provider: event.model?.providerID ?? prev?.provider ?? "unknown",
           model: event.model?.id ?? event.model?.model ?? prev?.model ?? "unknown",
